@@ -1,0 +1,19 @@
+version: '3'
+services: 
+  web: 
+    build: 
+      context: .  # Define the build context (current directory)
+      dockerfile: Dockerfile
+    ports: 
+      - "8080:8080"  # Correct format for port mapping
+    container_name: my_web_container
+  db: 
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/mysql  # Correct directory for MySQL data
+    container_name: mysql_container
+
+volumes:
+  db-data:

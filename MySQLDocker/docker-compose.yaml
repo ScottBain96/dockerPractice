@@ -1,0 +1,21 @@
+#Proof of concept
+#mysql password will be changed by the specific application installer that connects to this MySQL instance.
+services:
+  mysql:
+    image: test-mysql:8.0.33
+    container_name: test-mysql-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=removedTempValues
+    ports:
+      - "3306:3306"
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+          cpus: "4"
+    volumes:
+      - db-data:/var/lib/mysql
+    
+    
+volumes:
+  db-data:
